@@ -1,8 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import connectDB from "./db.js";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
+import uploadRouter from "./routes/upload.route.js";
 
 // Load environment variables early
 dotenv.config();
@@ -13,11 +15,19 @@ connectDB();
 // Initialize the Express application
 const app = express();
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // Routes
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/upload", uploadRouter);
 
 // Global error handler (middleware)
 app.use((err, req, res, next) => {
