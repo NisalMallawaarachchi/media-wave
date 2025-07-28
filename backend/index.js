@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./db.js";
 import userRouter from "./routes/user.route.js";
+import authRouter from "./routes/auth.route.js";
 
 // Load environment variables early
 dotenv.config();
@@ -16,6 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
 
 const PORT = process.env.PORT || 3000;
 
