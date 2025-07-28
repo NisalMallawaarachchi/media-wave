@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import errorHandler from "../middlewares/error.js";
 
 /**
  * User signup controller

@@ -19,6 +19,18 @@ app.use(express.json());
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 
+// Global error handler (middleware)
+app.use((err, req, res, next) => {
+  console.error("Error:", err);
+  const statusCode = err.statusCode || 500; // If the error has a status code, use it; otherwise, default to 500
+  const message = err.message || "Internal Server Error"; // If the error has a specific message, use it; otherwise, default to a generic message
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    error: message,
+  });
+});
+
 const PORT = process.env.PORT || 3000;
 
 // Start the server
