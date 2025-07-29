@@ -5,6 +5,7 @@ import connectDB from "./db.js";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import uploadRouter from "./routes/upload.route.js";
+import dashboardRouter from "./routes/dashboard.route.js";
 
 // Load environment variables early
 dotenv.config();
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/upload", uploadRouter);
+app.use("/api/dashboard", dashboardRouter);
 
 // Global error handler (middleware)
 app.use((err, req, res, next) => {
