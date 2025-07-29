@@ -70,7 +70,8 @@ export default function SignIn() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50">
+    <div className="flex justify-center pt-22 min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50">
+
       <ToastContainer />
       <div className="bg-white p-8 rounded-xl shadow-xl max-w-md w-full mx-4 border border-gray-100">
         <div className="text-center mb-8">
