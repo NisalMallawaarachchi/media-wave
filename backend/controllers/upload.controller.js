@@ -1,6 +1,7 @@
 // controllers/uploadController.js
 import { cloudinary } from "../config/cloudinaryConfig.js";
 import fs from "fs/promises";
+import Media from "../models/media.model.js";
 
 export const uploadFiles = async (req, res) => {
   try {
@@ -40,6 +41,9 @@ export const uploadFiles = async (req, res) => {
         bytes: result.value.bytes,
       }));
 
+    // Save to DB
+    await Media.insertMany(uploadedFiles);
+
     const failedUploads = results
       .filter((result) => result.status === "rejected")
       .map((result) => result.reason.message);
@@ -71,5 +75,57 @@ export const deleteFile = async (req, res) => {
     res.json({ success: true, message: "File deleted successfully" });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+// controllers/upload.controller.js
+export const getMediaList = async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 5; // Default to 5 items
+    const media = await Media.find()
+      .limit(limit)
+      .sort({ createdAt: -1 }) // Newest first
+      .lean(); // Convert to plain JS objects
+
+    res.json({
+      success: true,
+      data: media.map((item) => ({
+        id: item._id.toString(), // Convert ObjectId to string
+        url: item.url,
+        title: item.title || "Untitled", // Default title
+        tags: item.tags || [], // Default empty array
+        date: item.createdAt.toLocaleDateString(), // Format date
+      })),
+    });
+  } catch (error) {
+    console.error("Error fetching media:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to fetch media",
+    });
+  }
+};
+
+export const getMediaDetails = async (req, res) => {
+  try {
+    const media = await Media.findById(req.params.id);
+
+    if (!media) {
+      return res.status(404).json({
+        success: false,
+        error: "Media not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      data: media,
+    });
+  } catch (error) {
+    console.error("Error getting media details:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to fetch media details",
+    });
   }
 };
