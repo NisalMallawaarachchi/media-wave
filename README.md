@@ -1,49 +1,39 @@
 # 📷 Image Gallery - MERN Stack Application
 
-```markdown
+````markdown
 # 📷 Image Gallery - MERN Stack Application
-
-![MERN Stack](https://img.shields.io/badge/Stack-MERN-61DAFB?logo=mongodb&logoColor=47A248&logoWidth=20&logo=express&logoColor=000000&logo=react&logoColor=61DAFB&logo=node.js&logoColor=339933)
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 A full-featured image gallery application built with the MERN stack (MongoDB, Express.js, React, Node.js) with cloud-based image storage using Cloudinary.
 
 ## ✨ Features
 
 ### 🖼️ Image Management
+
 - Upload, view, and manage images in a beautiful grid layout
 - Responsive design that works on all devices
 - High-performance image loading with lazy loading
 - Image details viewing with modal popup
 
-### 🔍 Search & Filter
-- Powerful search functionality with keyword matching
-- Filter images by categories or tags
-- Pagination for browsing large collections
-
 ### 👤 User Experience
-- Secure authentication (signup/login)
-- User-specific collections
-- Favorite/Bookmark images
-- Social sharing options
 
-### ⚙️ Admin Features
+- Secure authentication (signup/login)
 - Bulk image uploads
-- Image metadata editing
-- User management dashboard
+- User-specific collections
+- User dashboard
 
 ## 🛠️ Technologies Used
 
-| Category        | Technologies                                                                 |
-|-----------------|------------------------------------------------------------------------------|
-| **Frontend**    | React, Redux Toolkit, React Router, Axios, Tailwind CSS, React Icons        |
-| **Backend**     | Node.js, Express.js, MongoDB, Mongoose, JWT, Bcrypt, CORS                   |
-| **Storage**     | Cloudinary (Image hosting), Multer (File uploads)                           |
-| **Dev Tools**   | Nodemon, ESLint, Prettier, Git                                              |
+| Category      | Technologies                                                         |
+| ------------- | -------------------------------------------------------------------- |
+| **Frontend**  | React, Redux Toolkit, React Router, Axios, Tailwind CSS, React Icons |
+| **Backend**   | Node.js, Express.js, MongoDB, Mongoose, JWT, Bcrypt, CORS            |
+| **Storage**   | Cloudinary (Image hosting), Multer (File uploads)                    |
+| **Dev Tools** | Nodemon, ESLint, Prettier, Git                                       |
 
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v14+)
 - MongoDB Atlas account or local MongoDB installation
 - Cloudinary account (for image storage)
@@ -53,90 +43,59 @@ A full-featured image gallery application built with the MERN stack (MongoDB, Ex
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/UmbrellaSkiies/Image_Gallery.git
-   cd Image_Gallery
+   git clone https://github.com/NisalMallawaarachchi/media-wave.git
+   cd media-wave
    ```
+````
 
 2. **Set up environment variables**
-   Create `.env` files in both `client` and `server` directories:
+   Create `.env` files in both `frontend` and `media-wave root` (not inside the backend folder) directories:
 
-   **Server (.env)**
+   **backend (.env)**
+
    ```env
-   MONGODB_URI=your_mongodb_connection_string
+   PORT=5000
+   MONGODB_URL=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret_key
    CLOUDINARY_CLOUD_NAME=your_cloudinary_name
    CLOUDINARY_API_KEY=your_cloudinary_key
    CLOUDINARY_API_SECRET=your_cloudinary_secret
-   JWT_SECRET=your_jwt_secret_key
-   PORT=5000
    ```
 
-   **Client (.env)**
+   **frontend (.env)**
+
    ```env
-   REACT_APP_API_BASE_URL=http://localhost:5000/api
+   VITE_FIREBASE_API_KEY=your_firebase_api_key
    ```
 
 3. **Install dependencies**
+
    ```bash
-   # Install server dependencies
-   cd server
+   # Install backend dependencies in media-ware root directory
+
    npm install
 
-   # Install client dependencies
-   cd ../client
+
+   # Install frontend dependencies
+
+   cd frontend
    npm install
    ```
 
 4. **Run the application**
+
    ```bash
-   # Start the server (from server directory)
+   # Start the server (from root directory)
    npm run dev
 
-   # Start the client (from client directory)
-   npm start
+   # Start the client (from frontend directory)
+   npm run dev
    ```
 
-   The app will be available at `http://localhost:3000`
-
-## 📂 Project Structure
-
-```
-Image_Gallery/
-├── client/                  # React frontend
-│   ├── public/              # Static files
-│   └── src/                 # React source files
-│       ├── assets/          # Images, fonts, etc.
-│       ├── components/      # Reusable components
-│       ├── pages/           # Page components
-│       ├── store/           # Redux store
-│       ├── utils/           # Utility functions
-│       └── App.js           # Main App component
-│
-├── server/                  # Express backend
-│   ├── config/              # Configuration files
-│   ├── controllers/         # Route controllers
-│   ├── middleware/          # Custom middleware
-│   ├── models/              # MongoDB models
-│   ├── routes/              # API routes
-│   ├── uploads/             # Temporary upload storage
-│   └── server.js            # Server entry point
-│
-├── .gitignore               # Git ignore rules
-└── README.md                # Project documentation
-```
-
-## 🌟 Advanced Features
-
-### Image Processing
-- Automatic thumbnail generation
-- EXIF data extraction
-- Image compression
-
-### Performance Optimizations
-- Client-side caching
-- Server-side pagination
-- CDN delivery via Cloudinary
+   The app will be available at `http://localhost:5173/`
 
 ### Security
+
 - JWT authentication
 - Rate limiting
 - Input sanitization
@@ -159,10 +118,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📧 Contact
 
-Project Maintainer - [Your Name](mailto:your.email@example.com)
+Project Maintainer - [Nisal Mallawaarachchi](nisalmallawarachchi@gmail.com)
 
-Project Link: [https://github.com/UmbrellaSkiies/Image_Gallery](https://github.com/UmbrellaSkiies/Image_Gallery)
-```
+Project Link: [https://github.com/NisalMallawaarachchi/media-wave]
 
 ## Key Features of This README:
 
