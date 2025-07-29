@@ -122,15 +122,3 @@ Project Maintainer - [Nisal Mallawaarachchi](nisalmallawarachchi@gmail.com)
 
 Project Link: [https://github.com/NisalMallawaarachchi/media-wave]
 
-## Key Features of This README:
-
-1. **Professional Badges**: Shows the MERN stack and license status at the top
-2. **Organized Features**: Categorized into Image Management, Search, User Experience, and Admin sections
-3. **Technology Table**: Clear visualization of all technologies used
-4. **Detailed Setup**: Step-by-step installation guide with environment variables
-5. **Project Structure**: Visual representation of the directory layout
-6. **Advanced Features**: Highlights technical capabilities
-7. **Contribution Guide**: Clear instructions for contributors
-8. **Contact Information**: Makes it easy to reach the maintainer
-
-You can copy this entire markdown content directly into your README.md file. The formatting uses standard GitHub Flavored Markdown and will render beautifully on GitHub. The emojis and visual elements make it more engaging while maintaining professional documentation standards.
