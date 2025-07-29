@@ -25,7 +25,7 @@ A full-featured image gallery application built with the MERN stack (MongoDB, Ex
 
 | Category      | Technologies                                                         |
 | ------------- | -------------------------------------------------------------------- |
-| **Frontend**  | React, Redux Toolkit, React Router, Axios, Tailwind CSS, React Icons |
+| **Frontend**  | React, React Router, Tailwind CSS, React Icons, REST API             |
 | **Backend**   | Node.js, Express.js, MongoDB, Mongoose, JWT, Bcrypt, CORS            |
 | **Storage**   | Cloudinary (Image hosting), Multer (File uploads)                    |
 | **Dev Tools** | Nodemon, ESLint, Prettier, Git                                       |
