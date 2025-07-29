@@ -3,6 +3,7 @@ import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import OAuth from "../../components/OAuth"; // Assuming you have an OAuth component
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -76,7 +77,7 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50">
+    <div className="flex justify-center pt-28 min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50">
       <ToastContainer />
       <div className="bg-white p-8 rounded-xl shadow-xl max-w-md w-full mx-4 border border-gray-100">
         <div className="text-center mb-8">
@@ -163,6 +164,7 @@ export default function SignUp() {
               "Sign Up"
             )}
           </button>
+          <OAuth/>
         </form>
 
         {/* Divider */}
