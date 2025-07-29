@@ -86,3 +86,64 @@ export const signin = async (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * Google OAuth authentication controller
+ * Handles user authentication via Google OAuth
+ */
+export const googleAuth = async (req, res, next) => {
+  const { name, email, photo } = req.body;
+
+//✅ Add this line here to debug the Google profile photo
+  console.log("Google photo URL:", photo);
+
+  try {
+    // Check if user already exists
+    const existingUser = await User.findOne({ email: req.body.email });
+
+    if (existingUser) {
+      // Generate JWT token
+      const token = jwt.sign(
+        { _id: existingUser._id },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "1h",
+        }
+      );
+
+      // Return the user with avatar field
+      const { password: pass, ...rest } = existingUser._doc;
+      res
+        .cookie("access_token", token, { httpOnly: true }) // Set cookie with token
+        .status(200)
+        .json(rest); // Return user data without password
+    } else {
+      const generatedPassword =
+        Math.random().toString(36).slice(-8) +
+        Math.random().toString(36).slice(-8); // Generate a random password
+      const hashedPassword = await bcrypt.hash(generatedPassword, 12);
+
+      // Create a new user with Google data
+      const newUser = new User({
+        username:
+          req.body.name.split(" ").join("").toLowerCase() +
+          Math.random().toString(36).slice(-4), // Convert name to lowercase without spaces
+        email: req.body.email,
+        password: hashedPassword,
+        avatar: req.body.photo,
+      });
+      await newUser.save();
+
+      // Generate JWT token for new user
+      const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET);
+      const { password: pass, ...rest } = newUser._doc;
+      // Set HTTP-only cookie with token
+      res
+        .cookie("access_token", token, { httpOnly: true }) // Set cookie with token
+        .status(200)
+        .json(rest);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
